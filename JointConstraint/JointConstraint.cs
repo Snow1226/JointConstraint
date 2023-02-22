@@ -52,12 +52,13 @@ namespace JointConstraint
         {
             VMCEvents.OnModelLoaded += OnModelLoaded;
             VMCEvents.OnModelLoaded += model => _currentModel = model;
+
+            VMCEvents.OnModelUnloading += OnModelUnloading;
+
         }
         void Start()
         {
             Debug.Log("JointConstraint Mod started.");
-            _constraintObjects = new List<ConstraintObject>();
-            _positionConstraints = new List<ConstraintObject>();
         }
 
         private void Update()
@@ -75,16 +76,21 @@ namespace JointConstraint
 
         private void OnPostUpdate()
         {
-            foreach(ConstraintObject cObj in _constraintObjects)
-                RunConstraint(cObj.Source, cObj.Target);
+            if (_currentModel != null)
+            {
+                foreach (ConstraintObject cObj in _constraintObjects)
+                    RunConstraint(cObj.Source, cObj.Target);
 
-            foreach (ConstraintObject cObj in _positionConstraints)
-                cObj.Source.transform.position = cObj.Target.transform.position;
+                foreach (ConstraintObject cObj in _positionConstraints)
+                    cObj.Source.transform.position = cObj.Target.transform.position;
+
+            }
         }
 
         private void RunConstraint(GameObject src, GameObject target, float weight = 0.5f)
         {
-            src.transform.localRotation = Quaternion.Slerp(Quaternion.identity, target.transform.localRotation, weight);
+            if (src != null && target != null)
+                src.transform.localRotation = Quaternion.Slerp(Quaternion.identity, target.transform.localRotation, weight);
         }
 
         [OnSetting]
@@ -92,9 +98,19 @@ namespace JointConstraint
         {
         }
 
+        private void OnModelUnloading(GameObject currentModel)
+        {
+            _currentModel = null;
+        }
+
         private void OnModelLoaded(GameObject currentModel)
         {
             if (currentModel == null) return;
+
+            _constraintObjects = new List<ConstraintObject>();
+            _positionConstraints = new List<ConstraintObject>();
+            _positionConstraintNames.Clear();
+            _positionConstraints.Clear();
 
             var animator = currentModel.GetComponent<Animator>();
             StartCoroutine(SetConstraintChildObject());
