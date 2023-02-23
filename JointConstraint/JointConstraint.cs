@@ -7,9 +7,10 @@ using RootMotion.FinalIK;
 
 namespace JointConstraint
 {
+    //VMC 0.55b1
     [VMCPlugin(
     Name: "JointConstraint",
-    Version: "0.0.1",
+    Version: "0.0.2",
     Author: "snow1226",
     Description: "Constraintを追加する",
     AuthorURL: "https://twitter.com/snow_mil",
@@ -52,9 +53,9 @@ namespace JointConstraint
         {
             VMCEvents.OnModelLoaded += OnModelLoaded;
             VMCEvents.OnModelLoaded += model => _currentModel = model;
+            VMCEvents.OnCurrentModelChanged += OnCurrentModelChanged;
 
             VMCEvents.OnModelUnloading += OnModelUnloading;
-
         }
         void Start()
         {
@@ -104,6 +105,19 @@ namespace JointConstraint
         }
 
         private void OnModelLoaded(GameObject currentModel)
+        {
+            if (currentModel == null) return;
+
+            Debug.Log("OnModelLoaded");
+            _constraintObjects = new List<ConstraintObject>();
+            _positionConstraints = new List<ConstraintObject>();
+            _positionConstraintNames.Clear();
+            _positionConstraints.Clear();
+
+            var animator = currentModel.GetComponent<Animator>();
+            StartCoroutine(SetConstraintChildObject());
+        }
+        private void OnCurrentModelChanged(GameObject currentModel)
         {
             if (currentModel == null) return;
 

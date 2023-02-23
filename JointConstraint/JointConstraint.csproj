@@ -31,8 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>D:\Download\VirtualMotionCapture0.52b16_trackerpositions\VirtualMotionCapture_Data\Managed\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Download\VirtualMotionCapture0.55b1\VirtualMotionCapture_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,14 +46,17 @@
     <Reference Include="UnityEngine">
       <HintPath>D:\Download\VirtualMotionCapture0.52b16_trackerpositions\VirtualMotionCapture_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>D:\Download\VirtualMotionCapture0.52b16_trackerpositions\VirtualMotionCapture_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+    <Reference Include="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Download\VirtualMotionCapture0.55b1\VirtualMotionCapture_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>D:\Download\VirtualMotionCapture0.52b16_trackerpositions\VirtualMotionCapture_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Download\VirtualMotionCapture0.55b1\VirtualMotionCapture_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-    <Reference Include="VMCMod">
-      <HintPath>D:\Download\VirtualMotionCapture0.52b16_trackerpositions\VirtualMotionCapture_Data\Managed\VMCMod.dll</HintPath>
+    <Reference Include="VMCMod, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Download\VirtualMotionCapture0.55b1\VirtualMotionCapture_Data\Managed\VMCMod.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
